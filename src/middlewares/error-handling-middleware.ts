@@ -8,8 +8,6 @@ export function handleApplicationErrors(
   res: Response,
   next: NextFunction
 ) {
-
-  console.log(err);
   res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
     error: "InternalServerError",
     message: "Internal Server Error",
