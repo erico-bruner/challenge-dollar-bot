@@ -40,10 +40,7 @@ For this project, the following were used:
 - Node (v 16.17.0);
 - Express;
 - TypeScript;
-- Prisma;
-- Postgres;
-- Jest and Supertest;
-- Joi;
+- Puppetear;
 
 # How to run in development
 
