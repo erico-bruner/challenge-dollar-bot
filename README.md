@@ -4,7 +4,7 @@ This project is a backend application of a technical challenge. In this applicat
 
 # Demo
 
-https://
+https://challenge-dollar-bot.onrender.com
 
 # How it works?
 
@@ -13,6 +13,7 @@ This project is a REST API to serve the application of a dollar quote website.
 ### Bot
 
 Represents the webscraping bot route.
+note: It was not configured to run in deploy, only in development!
 
 <details>
   <summary><code>GET /bot/dollar-quota</code></summary>
@@ -53,32 +54,10 @@ For this project, the following were used:
   npm i
   ```
 
-- Create a PostgreSQL database with whatever name you want
-- Configure the `.env.development` file using the `.env.example` file (see "Running application locally or inside docker section" for details)
-- Run all migrations
-
-  ```bash
-  npm run dev:migration:run
-  ```
+- Configure the `.env` file using the `.env.example`.
 
 - Run the back-end in a development environment:
 
   ```bash
   npm run dev
-  ```
-
-# How to run tests
-
-- Follow the steps in the last section
-- Configure the `.env.test` file using the `.env.example` file (see "Running application locally or inside docker" section for details)
-- Run all migrations:
-
-  ```bash
-  npm run test:migration:run
-  ```
-
-- Run test:
-
-  ```bash
-  npm run test
   ```
