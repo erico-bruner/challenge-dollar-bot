@@ -3,7 +3,16 @@ import puppeteer from "puppeteer";
 async function getDollarQuotaInRealWithPuppeteer() {
   const browser = await puppeteer.launch({ 
     headless: "new", 
-    args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+    args: [
+      "--no-sandbox", 
+      "--disable-setuid-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    executablePath: 
+      process.env.NODE_ENV === "production" 
+      ? process.env.PUPPETEER_EXECUTABLE_PATH
+      : puppeteer.executablePath(), 
   });
   const page = await browser.newPage();
   await page.goto(process.env.DOLLAR_QUOTE_SITE_URL);
