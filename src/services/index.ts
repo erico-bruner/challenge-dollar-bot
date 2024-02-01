@@ -1,3 +1,2 @@
-export * from './bot-service';
-export * from './dollar-service';
+export * from './api/one/dollar-service';
 

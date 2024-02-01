@@ -15,7 +15,7 @@ async function getDollarQuotaInRealWithPuppeteer() {
       : puppeteer.executablePath(), 
   });
   const page = await browser.newPage();
-  await page.goto(process.env.DOLLAR_QUOTE_SITE_URL);
+  await page.goto(process.env.DOLLAR_QUOTE_SITE_URL_ONE);
   const dollarValue = await page.$eval('.YMlKec.fxKbKc', (element) => element.textContent);
   const textContent = await page.$eval('.P2Luy.ZYVHBb', (element) => element.textContent);
   const [profitabilityToday] = textContent.split(" ");
@@ -25,6 +25,7 @@ async function getDollarQuotaInRealWithPuppeteer() {
     type: "USD/BRL",
     quota: dollarValue,
     profitability_today: profitabilityToday,
+    site: process.env.DOLLAR_QUOTE_SITE_URL_ONE,
   }
 }
 
@@ -42,6 +43,6 @@ async function readDollarQuota() {
   };
 }
 
-export const botService = {
+export const botServiceOne = {
   readDollarQuota
 };
