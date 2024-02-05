@@ -2,7 +2,7 @@ import puppeteer from "puppeteer";
 
 async function getDollarQuotaInRealWithPuppeteer() {
   const browser = await puppeteer.launch({ 
-    headless: true, 
+    headless: "new", 
     args: [
       "--no-sandbox", 
       "--disable-setuid-sandbox",
@@ -15,16 +15,14 @@ async function getDollarQuotaInRealWithPuppeteer() {
       : puppeteer.executablePath(), 
   });
   const page = await browser.newPage();
-  await page.goto(process.env.DOLLAR_QUOTE_SITE_URL_SECOND);
-  const purchase = await page.$eval('#home > div > div:nth-child(1) > div:nth-child(1) > div > cotacao > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2) > span', (element) => element.textContent);
-  const sales = await page.$eval('#home > div > div:nth-child(1) > div.componente.cotacao > div > cotacao > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(3) > span', (element) => element.textContent);
+  await page.goto(process.env.DOLLAR_QUOTE_SITE_URL_THIRD);
+  const dollarValue = await page.$eval('.style__Input-sc-zzw8vh-0', (element) => element.ariaValueText);
   await browser.close();
 
   return {
     type: "USD/BRL",
-    purchase_quota: purchase,
-    sales_quota: sales,
-    site: process.env.DOLLAR_QUOTE_SITE_URL_SECOND,
+    quota: dollarValue,
+    site: process.env.DOLLAR_QUOTE_SITE_URL_THIRD,
   }
 }
 
@@ -42,6 +40,6 @@ async function readDollarQuota() {
   };
 }
 
-export const botServiceSecond = {
+export const botServiceThird = {
   readDollarQuota
 };
